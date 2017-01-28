@@ -1,53 +1,42 @@
-<h1>Main pagw</h1>
+<h1 style="text-align: center ">Message board</h1>
 
-<div>
-    <h2>Sign in</h2>
-    <form action="/register" method="post">
-        Username:<br>
-        <input type="text" name="username" value="">
-        <br>
-        Password:<br>
-        <input type="password" name="pword" value="">
-        <br><br>
-        <input type="submit" value="Sign in">
-    </form>
 
-</div>
-
-<div>
-    <h2>Log in</h2>
+<div id="managment">
+    <div>
+        <h2>Log in</h2>
         <h3>{{error}}</h3>
-    <form action="/get-user" method="post">
-        Username:<br>
-        <input type="text" name="username" value="">
-        <br>
-        Password:<br>
-        <input type="password" name="pword" value="">
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
-
+        <form action="/get-user" method="post">
+            Username:<br>
+            <input type="text" name="username" value="">
+            <br>
+            Password:<br>
+            <input type="password" name="pword" value="">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <h2>Sign in</h2>
+        <form action="/register" method="post">
+            Username:<br>
+            <input type="text" name="username" value="">
+            <br>
+            Password:<br>
+            <input type="password" name="pword" value="">
+            <br><br>
+            <input type="submit" value="Sign in">
+        </form>
+    </div>
 </div>
-
-<div >
-    <p>List of users</p>
-    <ul>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Password</th>
-            </tr>
-            {{#each user}}
-                <tr>
-                    <th>{{this.id}}</th>
-                    <th>{{this.name}}</th>
-                    <th>{{this.password}}</th>
-                </tr>
-            {{else}}
-                <p>No users found</p>
-            {{/each}}
-        </table>
-    </ul>
+<div class="messages">
+    <p style="text-align: center, font-size:20px ">Messages</p>
+    {{#each messages}}
+        <div>
+            <div>{{{this.title}}}</div>
+            <div>{{{this.body}}}</div>
+        </div>
+    {{else}}
+        <p>There is no messages :(</p>
+    {{/each}}
 </div>
 

@@ -14,6 +14,14 @@ db.serialize(function () {
         console.log(row.id,row.name,row.password);
     });
 
+    db.run("CREATE TABLE message (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, body TEXT NOT NULL)");
+    var statement = db.prepare("INSERT INTO message ( title, body ) VALUES (?,?);");
+    for(var i = 0; i < 25; i++)
+    {
+        statement.run("Test Message " + (i+i), "Hi! This is a test message from admin. I hope you all like this chatboard!");
+    }
+    statement.finalize();
+
 });
 
 db.close();

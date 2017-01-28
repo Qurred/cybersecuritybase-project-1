@@ -7,26 +7,30 @@ var db = new sqlite3.Database('database');
 
 
 router.get('/', function(req, res, next) {
-    var users = [];
-    db.each("SELECT id, name, password FROM user", function (err, row) {
+    var result = [];
+    db.each("SELECT title, body FROM message ORDER BY id DESC LIMIT 20", function (err, row) {
         assert.equal(null,err);
-        users.push({"id":  row.id, "name": row.name, "password": row.password});
+        result.push({"title":  row.title, "body": row.body});
     }, function () {
-        res.render('index', {user: users});
+        res.render('index', {messages: result});
     });
 });
 
+
 router.post('/get-user',function (req, res, next) {
     var id;
+    console.log("SELECT id, name, password FROM user WHERE name = '" + req.body.username + "' and password = '" + req.body.pword+"';");
     db.each("SELECT id, name, password FROM user WHERE name = '" + req.body.username + "' and password = '" + req.body.pword+"';", function (err, row) {
         assert.equal(null,err);
         console.log(row);
-        id = row.id;
+        if(id == undefined) {
+            id = row.id;
+        }
     }, function () {
         if(id != undefined){
             res.redirect('users/'+id);
         }else{
-            res.render("index", {error: "Not found user-password combination"});
+            res.redirect("/");
         }
 
     });

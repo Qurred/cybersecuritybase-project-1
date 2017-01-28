@@ -1,9 +1,27 @@
-<h1>User managment</h1>
+<h1>Message board</h1>
 {{#each info}}
-    <p>User id: {{this.id}}</p>
     <p>Username: {{this.name}}</p>
     <p>Password: {{this.password}}</p>
-    <p>Is admin?: {{this.admin}}
+    <p>Is admin?: {{this.admin}}</p>
+    <form action="/users/send" method="post">
+        Title:<br>
+        <input type="text" name="title"><br>
+        Message:<br>
+        <textarea name="message"></textarea>
+        <input hidden name="id" value="{{this.id}}">
+        <input type="submit" value="Send Message">
+    </form>
 {{else}}
     <p>no user found</p>
 {{/each}}
+<div class="messages">
+    <p style="text-align: center,font-size:20px ">Messages</p>
+    {{#each messages}}
+        <div>
+            <div>{{{this.title}}}</div>
+            <div>{{{this.body}}}</div>
+        </div>
+    {{else}}
+        <p>There is no messages :(</p>
+    {{/each}}
+</div>

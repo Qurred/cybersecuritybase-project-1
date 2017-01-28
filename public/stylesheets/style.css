@@ -1,6 +1,30 @@
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#managment{
+  width: 180px;
+}
+
+#managment div {
+  float: left;
+  height: 200px;
+  width:180px;
+}
+.login{
+  background: #827eb7;
+  float: left;
+}
+.register{
+
+}
+
+.messages{
+  width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
