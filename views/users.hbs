@@ -1,0 +1,9 @@
+<h1>User managment</h1>
+{{#each info}}
+    <p>User id: {{this.id}}</p>
+    <p>Username: {{this.name}}</p>
+    <p>Password: {{this.password}}</p>
+    <p>Is admin?: {{this.admin}}
+{{else}}
+    <p>no user found</p>
+{{/each}}

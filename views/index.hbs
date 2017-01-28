@@ -1,0 +1,53 @@
+<h1>Main pagw</h1>
+
+<div>
+    <h2>Sign in</h2>
+    <form action="/register" method="post">
+        Username:<br>
+        <input type="text" name="username" value="">
+        <br>
+        Password:<br>
+        <input type="password" name="pword" value="">
+        <br><br>
+        <input type="submit" value="Sign in">
+    </form>
+
+</div>
+
+<div>
+    <h2>Log in</h2>
+        <h3>{{error}}</h3>
+    <form action="/get-user" method="post">
+        Username:<br>
+        <input type="text" name="username" value="">
+        <br>
+        Password:<br>
+        <input type="password" name="pword" value="">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+<div >
+    <p>List of users</p>
+    <ul>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+            {{#each user}}
+                <tr>
+                    <th>{{this.id}}</th>
+                    <th>{{this.name}}</th>
+                    <th>{{this.password}}</th>
+                </tr>
+            {{else}}
+                <p>No users found</p>
+            {{/each}}
+        </table>
+    </ul>
+</div>
+
