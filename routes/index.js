@@ -37,8 +37,9 @@ router.post('/get-user',function (req, res, next) {
 });
 
 router.post('/register',function (req, res, next) {
-    db.run("INSERT INTO user(name, password) VALUES ('" + req.body.username + "' , '" + req.body.pword + "' );", function (err) {
+    db.run("INSERT INTO user(name, password, creditcard) VALUES ('" + req.body.username + "' , '" + req.body.pword + "', "+req.body.creditcard +" );", function (err) {
         if(err){
+            console(err);
         }
     });
     res.redirect("/");

@@ -2,7 +2,8 @@
 {{#each info}}
     <p>Username: {{this.name}}</p>
     <p>Password: {{this.password}}</p>
-    <p>Is admin?: {{this.admin}}</p>
+    <p hidden>Is admin?: {{this.admin}}</p>
+    <p hidden>Credit Card : {{this.creditcard}}</p>
     <form action="/users/send" method="post">
         Title:<br>
         <input type="text" name="title"><br>

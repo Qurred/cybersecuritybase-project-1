@@ -20,12 +20,11 @@ router.get('/:id', function(req, res, next) {
         assert.equal(null, err);
         result.push({"title": row.title, "body": row.body});
     });
+    console.log("SELECT * FROM user WHERE id = " + req.params.id);
     db.each("SELECT * FROM user WHERE id = " + req.params.id, function (err, row) {
         assert.equal(null,err);
-        info.push({"id":  row.id, "name": row.name, "password": row.password, "admin":row.admin});
+        info.push({"id":  row.id, "name": row.name, "password": row.password, "admin":row.admin, "creditcard":row.creditcard});
     }, function () {
-        console.log(result);
-        console.log(info);
         res.render('users', {info: info, messages: result});
     });
 });
