@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var sqlite3 = require('sqlite3').verbose();
 var assert =require('assert');
-var db = new sqlite3.Database('database');
+var db = new sqlite3.Database('public/database.db');
 
 router.post('/send', function(req, res, next) {
     db.run("INSERT INTO message(title, body) VALUES ('" + req.body.title + "' , '" + req.body.message + "' );", function (err) {

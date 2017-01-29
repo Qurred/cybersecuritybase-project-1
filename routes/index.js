@@ -3,7 +3,7 @@ var router = express.Router();
 var sqlite3 = require('sqlite3').verbose();
 var assert =require('assert');
 
-var db = new sqlite3.Database('database');
+var db = new sqlite3.Database('public/database.db');
 
 
 router.get('/', function(req, res, next) {

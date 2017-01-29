@@ -1,6 +1,6 @@
 var sqlite3 = require('sqlite3').verbose();
 
-var db = new sqlite3.Database('../../database');
+var db = new sqlite3.Database('../database.db');
 
 db.serialize(function () {
     db.run('CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL , password TEXT NOT NULL, admin int  DEFAULT 0 NOT NULL, creditcard int not null, CONSTRAINT name_unique UNIQUE (name))');
